@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>코숏 쓰다듬기 - oiia 밈 대란 & 유니크 냥이</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.7); opacity: 0; }
+            20% { opacity: 1; transform: translateY(-12px) scale(1.1); }
+            100% { transform: translateY(-75px) scale(0.95); opacity: 0; }
+        }
+
+        @keyframes shakeAngry {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            20% { transform: translateX(-10px) rotate(-2deg); }
+            40% { transform: translateX(10px) rotate(2deg); }
+            60% { transform: translateX(-6px) rotate(-1deg); }
+            80% { transform: translateX(6px) rotate(1deg); }
+        }
+
+        @keyframes purrVibrate {
+            0%, 100% { transform: translateY(0) scaleY(1); }
+            50% { transform: translateY(1.5px) scaleY(0.985); }
+        }
+
+        @keyframes breathIdle {
+            0%, 100% { transform: scaleY(1) scaleX(1); }
+            50% { transform: scaleY(1.02) scaleX(0.99); }
+        }
+
+        @keyframes chewMotion {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            30% { transform: translateY(-2px) rotate(-1.5deg); }
+            70% { transform: translateY(2px) rotate(1.5deg); }
+        }
+
+        @keyframes tailWagSlow {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(8deg); }
+        }
+
+        @keyframes tailAngrySlap {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-28deg); }
+            75% { transform: rotate(22deg); }
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.4) translateY(30px); opacity: 0; }
+            70% { transform: scale(1.04) translateY(-4px); opacity: 1; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        @keyframes walkAway {
+            0% { transform: translateX(0) scaleX(1); opacity: 1; }
+            100% { transform: translateX(120vw) scaleX(1); opacity: 0; }
+        }
+
+        @keyframes capDrop {
+            0% { transform: translateY(-80px) rotate(0deg) scale(0.5); opacity: 0; }
+            60% { transform: translateY(6px) rotate(340deg) scale(1.1); opacity: 1; }
+            80% { transform: translateY(-4px) rotate(355deg) scale(0.95); }
+            100% { transform: translateY(0) rotate(360deg) scale(1); opacity: 1; }
+        }
+
+        @keyframes capSweep {
+            0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateX(140vw) rotate(720deg); opacity: 0; }
+        }
+
+        /* 고개 갸우뚱 애니메이션 */
+        @keyframes headTiltAnim {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-18deg); }
+            55% { transform: rotate(-15deg); }
+            80% { transform: rotate(-19deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .head-tilting {
+            transform-origin: 96px 115px;
+            animation: headTiltAnim 1.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* 무지개빛 레인보우 효과 */
+        @keyframes rainbowGlow {
+            0% { filter: hue-rotate(0deg) drop-shadow(0 10px 20px rgba(255,100,100,0.3)); }
+            50% { filter: hue-rotate(180deg) drop-shadow(0 10px 20px rgba(100,200,255,0.3)); }
+            100% { filter: hue-rotate(360deg) drop-shadow(0 10px 20px rgba(255,100,100,0.3)); }
+        }
+        .animate-rainbow {
+            animation: rainbowGlow 2.4s infinite linear;
+        }
+
+        .animate-float-up {
+            animation: floatUp 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            pointer-events: none;
+        }
+
+        .animate-angry {
+            animation: shakeAngry 0.42s ease-in-out;
+        }
+
+        .animate-purr {
+            animation: purrVibrate 0.28s infinite ease-in-out;
+        }
+
+        .animate-breath {
+            transform-origin: bottom center;
+            animation: breathIdle 3.2s infinite ease-in-out;
+        }
+
+        .animate-chew {
+            transform-origin: center center;
+            animation: chewMotion 0.32s infinite ease-in-out;
+        }
+
+        .animate-pop-in {
+            animation: popIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .animate-walk-away {
+            animation: walkAway 1.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .bottle-cap-item {
+            animation: capDrop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transition: transform 0.2s ease;
+        }
+
+        .sweeping-caps {
+            animation: capSweep 0.8s cubic-bezier(0.5, 0, 0.75, 1) forwards;
+        }
+
+        .waiting-cat-item {
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
+        }
+        .waiting-cat-item:hover {
+            transform: translateY(-6px) scale(1.08);
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.12));
+        }
+
+        @keyframes churuFeed {
+            0%, 100% { transform: rotate(-18deg) translate(0, 0); }
+            50% { transform: rotate(-10deg) translate(6px, -4px); }
+        }
+        .animate-churu {
+            animation: churuFeed 0.45s infinite ease-in-out;
+        }
+
+        @keyframes toySwing {
+            0%, 100% { transform: rotate(-18deg) translateY(0); }
+            50% { transform: rotate(20deg) translateY(-16px); }
+        }
+        .animate-toy {
+            transform-origin: top right;
+            animation: toySwing 0.5s infinite ease-in-out;
+        }
+
+        @keyframes laserBounce {
+            0% { transform: translate(-45px, 28px) scale(0.9); }
+            25% { transform: translate(-15px, 42px) scale(1.2); }
+            50% { transform: translate(-65px, 36px) scale(0.95); }
+            75% { transform: translate(-25px, 22px) scale(1.25); }
+            100% { transform: translate(-45px, 28px) scale(0.9); }
+        }
+        .animate-laser {
+            animation: laserBounce 0.65s infinite ease-in-out;
+        }
+
+        @keyframes featherTease {
+            0%, 100% { transform: translateY(0) rotate(-14deg); }
+            35% { transform: translateY(-22px) rotate(12deg); }
+            70% { transform: translateY(-8px) rotate(-6deg); }
+        }
+        .animate-feather {
+            transform-origin: top right;
+            animation: featherTease 0.55s infinite ease-in-out;
+        }
+
+        @keyframes plushNuzzle {
+            0%, 100% { transform: rotate(-8deg) translate(0, 0); }
+            50% { transform: rotate(8deg) translate(5px, -6px); }
+        }
+        .animate-plush {
+            animation: plushNuzzle 0.48s infinite ease-in-out;
+        }
+
+        .minimal-pill {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid #F1F5F9;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+        }
+
+        .hit-zone {
+            cursor: grab;
+        }
+        .hit-zone:active {
+            cursor: grabbing;
+        }
+
+        /* 가로 스크롤바 숨김 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="w-screen h-screen bg-white text-slate-800 flex flex-col justify-between relative overflow-hidden">
+
+    <!-- ==================== 1. 상단 정보 및 헤더 ==================== -->
+    <header class="w-full z-30 px-4 pt-4 sm:px-8 sm:pt-6 flex items-start justify-between gap-3 pointer-events-none">
+        <!-- 현재 고양이 프로필 카드 (고양이가 화면에 없을 때는 완전히 숨김) -->
+        <div id="catHeaderCard" class="hidden minimal-pill rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 pointer-events-auto flex-col gap-2 min-w-[235px] sm:min-w-[300px] transition-all duration-300">
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                    <!-- 이름 클릭 시 이름 변경 입력창 활성화 -->
+                    <button id="editNameTriggerBtn" title="클릭해서 고양이 이름 지어주기"
+                        class="group flex items-center gap-1.5 px-2 py-0.5 -ml-1.5 rounded-lg hover:bg-slate-100 active:scale-95 transition-all text-left">
+                        <span id="catNameDisplay" class="font-bold text-base sm:text-lg text-slate-900 tracking-tight">모모</span>
+                        <i class="fa-solid fa-pen text-[11px] text-slate-400 group-hover:text-rose-500 transition-colors"></i>
+                    </button>
+
+                    <!-- 이름 부르기 버튼 -->
+                    <button id="callCatNameBtn" title="설정된 이름으로 고양이 부르기"
+                        class="px-2 py-0.5 rounded-lg bg-rose-50 hover:bg-rose-100 active:scale-95 text-rose-600 text-[11px] font-bold flex items-center gap-1 transition-all border border-rose-200/70">
+                        <i class="fa-solid fa-bullhorn text-[10px]"></i>
+                        <span>부르기</span>
+                    </button>
+
+                    <span id="catPatternBadge" class="text-[11px] sm:text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-200 text-slate-800">코숏 · 회색냥</span>
+                </div>
+                <span id="catSizeBadge" class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 shrink-0">통통 식빵</span>
+            </div>
+
+            <!-- 인라인 이름 수정 영역 (평소엔 숨김) -->
+            <div id="nameEditRow" class="hidden items-center gap-1.5 pt-0.5">
+                <input id="catNameInput" type="text" maxlength="10" placeholder="새 이름 입력 (최대 10자)"
+                    class="w-full px-2.5 py-1 text-xs sm:text-sm font-bold text-slate-800 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:border-rose-400 focus:bg-white">
+                <button id="saveNameBtn"
+                    class="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shrink-0 active:scale-95 transition-all">
+                    확인
+                </button>
+                <button id="cancelNameBtn"
+                    class="px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold shrink-0 active:scale-95 transition-all">
+                    취소
+                </button>
+            </div>
+
+            <!-- 레벨 & 호감도 프로그레스 바 -->
+            <div class="flex items-center gap-2.5">
+                <div class="flex items-center gap-1 shrink-0">
+                    <span class="text-xs font-extrabold text-rose-500">Lv.</span>
+                    <span id="catLevelDisplay" class="text-sm sm:text-base font-black text-slate-900">1</span>
+                    <span id="catTargetLevelDisplay" class="text-[11px] text-slate-400 font-medium">/ 10</span>
+                </div>
+                <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden relative">
+                    <div id="expBarFill" class="h-full bg-gradient-to-r from-slate-400 via-emerald-400 to-rose-400 rounded-full transition-all duration-300 ease-out" style="width: 0%;"></div>
+                </div>
+                <span id="expTextDisplay" class="text-[11px] font-semibold text-slate-400 w-9 text-right shrink-0">0%</span>
+            </div>
+        </div>
+
+        <!-- 좌상단 카드가 숨겨졌을 때 우측 버튼들이 좌측으로 밀리지 않도록 유지하는 스페이서 -->
+        <div id="headerLeftSpacer" class="flex-1"></div>
+
+        <!-- 우측 컨트롤 버튼 그룹 -->
+        <div class="flex items-center gap-2 sm:gap-3 pointer-events-auto shrink-0">
+            <button id="soundToggleBtn" title="골골송 소리 켜기/끄기"
+                class="minimal-pill w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-50 active:scale-95 transition-all">
+                <i id="soundIcon" class="fa-solid fa-volume-high text-base sm:text-lg"></i>
+            </button>
+
+            <button id="callNextCatBtn"
+                class="minimal-pill px-4 h-11 sm:px-5 sm:h-12 rounded-2xl flex items-center gap-2.5 bg-white hover:bg-slate-50 active:scale-95 transition-all group border border-slate-200/80">
+                <span class="w-7 h-7 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <i class="fa-solid fa-cat text-sm"></i>
+                </span>
+                <span class="font-bold text-xs sm:text-sm text-slate-800 whitespace-nowrap">다른 고양이 부르기</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== 2. 중앙 메인 무대 ==================== -->
+    <main id="stageArea" class="relative flex-1 w-full h-full flex flex-col items-center justify-center bg-white">
+        
+        <!-- 뒤쪽 대기 공간 (간택 완료 고양이들) -->
+        <div id="waitingLounge" class="w-full max-w-4xl px-4 pt-2 pb-1 flex flex-col items-center justify-center z-10 min-h-[100px]">
+            <div id="waitingGuideLabel" class="hidden text-[11px] sm:text-xs font-medium text-slate-400 mb-1.5 flex items-center gap-1.5 bg-slate-50/90 px-3 py-1 rounded-full">
+                <i class="fa-solid fa-heart text-rose-400 text-[10px]"></i>
+                <span>집사 간택 완료된 냥이들이 대기 중이에요! 클릭하면 앞으로 소환돼요</span>
+            </div>
+            <div id="waitingCatsRow" class="flex flex-wrap items-end justify-center gap-3 sm:gap-6"></div>
+        </div>
+
+        <!-- 상태 알림 배지 -->
+        <div id="statusBubble" class="z-20 h-9 flex items-center justify-center pointer-events-none transition-all duration-300 opacity-0 transform translate-y-2">
+            <span id="statusBubbleText" class="px-3.5 py-1 rounded-full text-xs sm:text-sm font-bold bg-slate-800 text-white shadow-sm">
+                골골골... 기분 좋아요!
+            </span>
+        </div>
+
+        <!-- 메인 고양이 렌더링 컨테이너 -->
+        <div id="mainCatWrapper" class="relative flex-1 w-full flex items-center justify-center pb-6 sm:pb-10">
+            <!-- 고양이가 화면에 없을 때 나타나는 안내 빈 방 카드 -->
+            <div id="emptyStagePrompt" class="flex flex-col items-center justify-center text-center px-6 py-8 rounded-3xl bg-slate-50/70 border border-dashed border-slate-200 max-w-xs sm:max-w-sm transition-all">
+                <div class="w-14 h-14 rounded-2xl bg-white shadow-xs flex items-center justify-center text-slate-400 mb-3">
+                    <i class="fa-solid fa-paw text-2xl"></i>
+                </div>
+                <p class="font-bold text-sm sm:text-base text-slate-700 mb-1">지금은 방이 비어 있어요</p>
+                <p class="text-xs text-slate-400 leading-relaxed">오른쪽 위의 <span class="font-bold text-emerald-600">[다른 고양이 부르기]</span> 버튼을 눌러 귀여운 길냥이를 초대해 보세요!</p>
+            </div>
+
+            <div id="catScaleContainer" class="hidden relative items-center justify-center transition-transform duration-500 ease-out">
+                <div id="catGroundShadow" class="absolute bottom-[6%] w-[78%] h-7 rounded-[100%] bg-black/10 blur-md pointer-events-none transition-all duration-300"></div>
+
+                <div id="mainCatVisual" class="relative z-10 animate-breath select-none">
+                    <!-- 크레용/파스텔 스타일 식빵 고양이 일러스트 SVG -->
+                </div>
+
+                <!-- 소품 오버레이 (츄르, 다양한 장난감) -->
+                <div id="propOverlay" class="absolute inset-0 pointer-events-none z-20 flex items-center justify-center"></div>
+            </div>
+        </div>
+
+        <!-- 화면에 쌓이는 병뚜껑들이 위치하는 바닥 레이어 -->
+        <div id="bottleCapLayer" class="absolute inset-0 pointer-events-none z-15 overflow-hidden"></div>
+
+        <!-- 파티클 레이어 -->
+        <div id="particleLayer" class="fixed inset-0 pointer-events-none z-40 overflow-hidden"></div>
+    </main>
+
+    <!-- ==================== 3. 하단 액션 아이콘 바 (간식 + 5종 장난감) ==================== -->
+    <footer class="w-full z-30 pb-4 pt-2 px-3 sm:px-4 flex flex-col items-center justify-center gap-2 pointer-events-none">
+        <p id="hintText" class="text-[11px] sm:text-xs text-slate-400 font-medium tracking-tight text-center">
+            머리와 등을 쓰다듬어 주세요 · <span class="text-rose-400/90">배나 꼬리는 만지면 싫어해요!</span>
+        </p>
+
+        <div class="minimal-pill rounded-3xl p-1.5 sm:p-2 flex items-center gap-1.5 sm:gap-2 pointer-events-auto max-w-full overflow-x-auto no-scrollbar">
+            <!-- 간식 주기 버튼 -->
+            <button id="feedSnackBtn"
+                class="group shrink-0 flex items-center gap-1.5 px-3.5 sm:px-4 py-2.5 rounded-2xl bg-amber-50/90 hover:bg-amber-100 active:scale-95 transition-all text-amber-900 font-bold text-xs sm:text-sm">
+                <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-white shadow-xs flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z" fill="#FBBF24" fill-opacity="0.25"/>
+                        <path d="M18 12v.5"/><path d="M16 17.93a9.77 9.77 0 0 1 0-11.86"/>
+                    </svg>
+                </span>
+                <span>간식</span>
+            </button>
+
+            <div class="w-[1px] h-6 bg-slate-200/80 shrink-0"></div>
+
+            <!-- 장난감 선택 메뉴 (5종) -->
+            <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+                <!-- 1. 강아지풀 -->
+                <button id="playFoxtailBtn"
+                    class="group flex items-center gap-1.5 px-3 py-2.5 rounded-2xl bg-emerald-50/80 hover:bg-emerald-100 active:scale-95 transition-all text-emerald-900 font-bold text-xs"
+                    title="강아지풀 흔들기">
+                    <span class="w-6 h-6 rounded-xl bg-white shadow-xs flex items-center justify-center text-emerald-500 group-hover:rotate-12 transition-transform">
+                        <i class="fa-solid fa-seedling text-xs"></i>
+                    </span>
+                    <span>강아지풀</span>
+                </button>
+
+                <!-- 2. 레이저 포인터 -->
+                <button id="playLaserBtn"
+                    class="group flex items-center gap-1.5 px-3 py-2.5 rounded-2xl bg-rose-50/80 hover:bg-rose-100 active:scale-95 transition-all text-rose-900 font-bold text-xs"
+                    title="레이저 포인터 쏘기">
+                    <span class="w-6 h-6 rounded-xl bg-white shadow-xs flex items-center justify-center text-rose-500 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bullseye text-xs"></i>
+                    </span>
+                    <span>레이저</span>
+                </button>
+
+                <!-- 3. 깃털 낚싯대 -->
+                <button id="playFeatherBtn"
+                    class="group flex items-center gap-1.5 px-3 py-2.5 rounded-2xl bg-sky-50/80 hover:bg-sky-100 active:scale-95 transition-all text-sky-900 font-bold text-xs"
+                    title="깃털 낚싯대 흔들기">
+                    <span class="w-6 h-6 rounded-xl bg-white shadow-xs flex items-center justify-center text-sky-500 group-hover:-rotate-12 transition-transform">
+                        <i class="fa-solid fa-feather-pointed text-xs"></i>
+                    </span>
+                    <span>깃털낚시</span>
+                </button>
+
+                <!-- 4. 캣닢 생선 인형 -->
+                <button id="playCatnipBtn"
+                    class="group flex items-center gap-1.5 px-3 py-2.5 rounded-2xl bg-purple-50/80 hover:bg-purple-100 active:scale-95 transition-all text-purple-900 font-bold text-xs"
+                    title="캣닢 생선 인형 주기">
+                    <span class="w-6 h-6 rounded-xl bg-white shadow-xs flex items-center justify-center text-purple-500 group-hover:bounce transition-transform">
+                        <i class="fa-solid fa-fish-fins text-xs"></i>
+                    </span>
+                    <span>캣닢인형</span>
+                </button>
+
+                <!-- 5. 병뚜껑 던지기 -->
+                <button id="throwCapBtn"
+                    class="group flex items-center gap-1.5 px-3 py-2.5 rounded-2xl bg-indigo-50/80 hover:bg-indigo-100 active:scale-95 transition-all text-indigo-900 font-bold text-xs"
+                    title="병뚜껑 던지기 (주의: 너무 많이 던지면 화내요!)">
+                    <span class="w-6 h-6 rounded-xl bg-white shadow-xs flex items-center justify-center text-indigo-500 group-hover:rotate-45 transition-transform">
+                        <i class="fa-solid fa-circle-dot text-xs"></i>
+                    </span>
+                    <span>병뚜껑</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== 4. 집사 간택 토스트 ==================== -->
+    <div id="levelTenToast" class="fixed top-24 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-500 transform -translate-y-4">
+        <div class="bg-amber-500 text-white px-6 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 border border-amber-400">
+            <span class="text-2xl">👑</span>
+            <div>
+                <p id="levelTenTitle" class="font-black text-base sm:text-lg">집사 간택!</p>
+                <p class="text-xs text-amber-100">이 고양이가 당신을 집사로 임명했어요! '다른 고양이 부르기'를 누를 때까지 기다려요.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * ============================================================================
+         * 1. Web Audio API 사운드 엔진 (골골송, 야옹, 강아지 짖음, 하악질, 레벨업)
+         * ============================================================================
+         */
+        class CatSoundEngine {
+            constructor() {
+                this.ctx = null;
+                this.muted = false;
+                this.lastPurrTime = 0;
+            }
+
+            init() {
+                if (!this.ctx) {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    if (AudioCtx) this.ctx = new AudioCtx();
+                }
+                if (this.ctx && this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+            }
+
+            playPurr() {
+                if (this.muted) return;
+                this.init();
+                if (!this.ctx) return;
+                const now = this.ctx.currentTime;
+                if (now - this.lastPurrTime < 0.35) return;
+                this.lastPurrTime = now;
+
+                const osc = this.ctx.createOscillator();
+                const lfo = this.ctx.createOscillator();
+                const lfoGain = this.ctx.createGain();
+                const mainGain = this.ctx.createGain();
+
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(28, now);
+                lfo.type = 'sine';
+                lfo.frequency.setValueAtTime(24, now);
+                lfoGain.gain.setValueAtTime(12, now);
+                lfo.connect(lfoGain);
+                lfoGain.connect(osc.frequency);
+
+                mainGain.gain.setValueAtTime(0.001, now);
+                mainGain.gain.exponentialRampToValueAtTime(0.08, now + 0.08);
+                mainGain.gain.exponentialRampToValueAtTime(0.001, now + 0.34);
+
+                osc.connect(mainGain);
+                mainGain.connect(this.ctx.destination);
+                osc.start(now); lfo.start(now);
+                osc.stop(now + 0.35); lfo.stop(now + 0.35);
+            }
+
+            playMeow(pitchScale = 1.0) {
+                if (this.muted) return;
+                this.init();
+                if (!this.ctx) return;
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const filter = this.ctx.createBiquadFilter();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sawtooth';
+                const baseFreq = 440 * pitchScale;
+                osc.frequency.setValueAtTime(baseFreq * 0.85, now);
+                osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.28, now + 0.14);
+                osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.78, now + 0.42);
+
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(1100, now);
+                filter.Q.setValueAtTime(2.5, now);
+
+                gain.gain.setValueAtTime(0.001, now);
+                gain.gain.linearRampToValueAtTime(0.07, now + 0.07);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.44);
+
+                osc.connect(filter); filter.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(now); osc.stop(now + 0.45);
+            }
+
+            playConfusedTilt() {
+                if (this.muted) return;
+                this.init();
+                if (!this.ctx) return;
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(340, now);
+                osc.frequency.exponentialRampToValueAtTime(520, now + 0.22);
+
+                gain.gain.setValueAtTime(0.001, now);
+                gain.gain.linearRampToValueAtTime(0.05, now + 0.04);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.26);
+            }
+
+            playBark() {
+                if (this.muted) return;
+                this.init();
+                if (!this.ctx) return;
+                const now = this.ctx.currentTime;
+                [0, 0.16].forEach((offset) => {
+                    const t = now + offset;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(320, t);
+                    osc.frequency.exponentialRampToValueAtTime(640, t + 0.04);
+                    osc.frequency.exponentialRampToValueAtTime(240, t + 0.13);
+
+                    gain.gain.setValueAtTime(0.001, t);
+                    gain.gain.linearRampToValueAtTime(0.11, t + 0.02);
+                    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.14);
+
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start(t);
+                    osc.stop(t + 0.15);
+                });
+            }
+
+            playHiss() {
+                if (this.muted) return;
+                this.init();
+                if (!this.ctx) return;
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(620, now);
+                osc.frequency.exponentialRampToValueAtTime(290, now + 0.22);
+                gain.gain.setValueAtTime(0.001, now);
+                gain.gain.linearRampToValueAtTime(0.08, now + 0.03);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
+
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(now); osc.stop(now + 0.25);
+            }
+
+            playLevelUp(isMax = false) {
+                if (this.muted) return;
+                this.init();
+                if (!this.ctx) return;
+                const notes = isMax ? [523.25, 659.25, 783.99, 1046.50] : [523.25, 659.25, 783.99];
+                notes.forEach((freq, idx) => {
+                    const now = this.ctx.currentTime + idx * 0.09;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, now);
+                    gain.gain.setValueAtTime(0.001, now);
+                    gain.gain.linearRampToValueAtTime(0.08, now + 0.02);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+                    osc.connect(gain); gain.connect(this.ctx.destination);
+                    osc.start(now); osc.stop(now + 0.3);
+                });
+            }
+        }
+
+        const soundEngine = new CatSoundEngine();
+
+        /**
+         * ============================================================================
+         * 2. 프로시저럴 유니크 고양이 & 히든 캐릭터 생성기
+         * ============================================================================
+         */
+        const CAT_NAMES = ['모모', '보리', '두부', '레오', '코코', '나비', '밤이', '콩이', '치즈', '뭉치', '호두', '라떼', '루이', '초코', '설이', '구름', '별이', '탄이', '하늘', '우유', '망고', '달이', '콩떡', '보송', '단추'];
+        
+        const COAT_PALETTES = [
+            { name: '회색냥', baseMain: '#7E7E7E', neckShadow: '#646464', stripe: '#525252', earInner: '#ECA8A8', eyeIris: '#488A1D', pattern: 'solid', badge: 'bg-slate-200 text-slate-800' },
+            { name: '치즈태비', baseMain: '#E8A84C', neckShadow: '#CE8C32', stripe: '#B2721D', earInner: '#F4B4B4', eyeIris: '#488A1D', pattern: 'tabby', badge: 'bg-amber-100 text-amber-800' },
+            { name: '삼색이', baseMain: '#F5F2EB', neckShadow: '#DCD7CC', stripe: '#D97236', patch2: '#333333', earInner: '#F2AEAE', eyeIris: '#5B9A2D', pattern: 'calico', badge: 'bg-orange-100 text-orange-800' },
+            { name: '턱시도', baseMain: '#2E2E32', neckShadow: '#1D1D20', stripe: '#FFFFFF', earInner: '#E5989B', eyeIris: '#EAB308', pattern: 'tuxedo', badge: 'bg-zinc-800 text-white' },
+            { name: '고등어태비', baseMain: '#8A939E', neckShadow: '#6E7782', stripe: '#3E4650', earInner: '#ECA8A8', eyeIris: '#488A1D', pattern: 'tabby', badge: 'bg-slate-300 text-slate-900' },
+            { name: '크림냥', baseMain: '#EAD7B7', neckShadow: '#D1BC99', stripe: '#B8A07A', earInner: '#F5B7B7', eyeIris: '#3B82F6', pattern: 'solid', badge: 'bg-yellow-100 text-yellow-800' },
+            { name: '젖소무늬', baseMain: '#F8F8FA', neckShadow: '#DFDFE4', stripe: '#27272A', earInner: '#F2AEAE', eyeIris: '#488A1D', pattern: 'cow', badge: 'bg-sky-100 text-slate-800' },
+            { name: '샴포인트', baseMain: '#EFE6D5', neckShadow: '#D8CCB8', stripe: '#4A3728', earInner: '#C4A484', eyeIris: '#2563EB', pattern: 'point', badge: 'bg-stone-200 text-stone-800' },
+            { name: '카오스냥', baseMain: '#38302E', neckShadow: '#241E1D', stripe: '#D97706', patch2: '#9CA3AF', earInner: '#E5989B', eyeIris: '#65A30D', pattern: 'tortie', badge: 'bg-amber-900 text-amber-100' },
+            { name: '벵갈점박이', baseMain: '#D99B52', neckShadow: '#B87C38', stripe: '#5C3A18', earInner: '#F2AEAE', eyeIris: '#16A34A', pattern: 'spotted', badge: 'bg-amber-200 text-amber-900' },
+            { name: '하얀눈송이', baseMain: '#F4F4F6', neckShadow: '#DCDCE2', stripe: '#E4E4E7', earInner: '#FBCFE8', eyeIris: '#0EA5E9', pattern: 'solid', badge: 'bg-slate-100 text-slate-700' },
+            { name: '양말냥', baseMain: '#6B7280', neckShadow: '#4B5563', stripe: '#F9FAFB', earInner: '#ECA8A8', eyeIris: '#84CC16', pattern: 'socks', badge: 'bg-gray-200 text-gray-800' },
+            { name: '연어크림태비', baseMain: '#F3B58E', neckShadow: '#D9966E', stripe: '#C26D44', earInner: '#F9C6C6', eyeIris: '#10B981', pattern: 'tabby', badge: 'bg-rose-100 text-rose-800' },
+            { name: '올블랙', baseMain: '#27272A', neckShadow: '#18181B', stripe: '#18181B', earInner: '#D48C94', eyeIris: '#F59E0B', pattern: 'solid', badge: 'bg-neutral-900 text-neutral-100' }
+        ];
+
+        const EYE_COLOR_POOL = ['#488A1D', '#22C55E', '#EAB308', '#D97706', '#2563EB', '#0EA5E9', '#84CC16'];
+        // 반타블랙 및 투명 고양이 전용 신비로운 발광 눈색 풀
+        const MYSTIC_EYE_COLORS = ['#FACC15', '#38BDF8', '#A855F7', '#34D399', '#FB7185', '#F97316', '#22D3EE', '#E879F9', '#A3E635'];
+
+        const BODY_TRAITS = [
+            { label: '통통 식빵', bodyLen: 1.0, headRound: 1.0, tailLen: 1.0, earScale: 1.0, scale: 1.04, pitch: 0.96 },
+            { label: '짜리몽땅 귀요미', bodyLen: 0.86, headRound: 1.08, tailLen: 0.68, earScale: 0.94, scale: 0.98, pitch: 1.12 },
+            { label: '늘씬 미묘냥', bodyLen: 1.12, headRound: 0.95, tailLen: 1.22, earScale: 1.08, scale: 1.0, pitch: 1.04 },
+            { label: '동글동글 찐빵냥', bodyLen: 0.92, headRound: 1.12, tailLen: 0.88, earScale: 0.90, scale: 1.06, pitch: 0.94 },
+            { label: '왕꼬리 대장냥', bodyLen: 1.04, headRound: 1.02, tailLen: 1.28, earScale: 1.05, scale: 1.10, pitch: 0.88 },
+            { label: '아담 쪼꼬미', bodyLen: 0.88, headRound: 1.05, tailLen: 0.80, earScale: 1.03, scale: 0.91, pitch: 1.18 }
+        ];
+
+        let spawnedCatsPool = [];
+        let usedSignatures = new Set();
+        let hasMetCookie = false;
+        let currentCatIndex = null; // 처음 시작 시 화면에 고양이가 없는 상태로 시작
+        let currentMood = 'idle';
+        let moodResetTimer = null;
+        let bubbleTimer = null;
+        let isDragging = false;
+        let lastPetZone = null;
+        let lastParticleTime = 0;
+        let actionLock = false;
+        let bottleCapsCount = 0;
+
+        function getRandomTargetLevel() {
+            return Math.floor(Math.random() * 6) + 5;
+        }
+
+        // 반타블랙 및 투명 고양이의 눈색을 기존과 다른 색으로 변경
+        function randomizeMysticEyeColor(cat) {
+            if (!cat) return;
+            if (cat.specialType === 'vantablack' || cat.specialType === 'transparent') {
+                const candidates = MYSTIC_EYE_COLORS.filter(col => col !== cat.colors.eyeIris);
+                cat.colors.eyeIris = candidates[Math.floor(Math.random() * candidates.length)];
+            }
+        }
+
+        function createMorphProfile(trait) {
+            const jitter = (range) => 1 + (Math.random() - 0.5) * range;
+            return {
+                bodyLen: +(trait.bodyLen * jitter(0.10)).toFixed(2),
+                headRound: +(trait.headRound * jitter(0.08)).toFixed(2),
+                tailLen: +(trait.tailLen * jitter(0.20)).toFixed(2),
+                earScale: +(trait.earScale * jitter(0.10)).toFixed(2),
+                patternSeed: Math.floor(Math.random() * 1000)
+            };
+        }
+
+        function generateUniqueCat() {
+            const targetLevel = getRandomTargetLevel();
+            const roll = Math.random();
+
+            // 1) 초희귀 포메라니안 강아지 (3.5%)
+            if (roll < 0.035) {
+                return {
+                    id: 'pom_' + Math.random().toString(36).substring(2, 9),
+                    name: '솜뭉치 (남의 집 댕댕이)',
+                    patternName: '초희귀 포메라니안',
+                    badgeClass: 'bg-amber-500 text-white',
+                    sizeLabel: '주인 기다리는 중',
+                    scale: 0.96,
+                    pitch: 1.35,
+                    level: 1,
+                    targetLevel: 10,
+                    exp: 0,
+                    isAdopted: false,
+                    isWaitingAtBack: false,
+                    specialType: 'pomeranian',
+                    nameRenamedAt: 0,
+                    nameRenameCount: 0,
+                    interactionsSinceRename: 99,
+                    morph: { bodyLen: 1, headRound: 1, tailLen: 1, earScale: 1, patternSeed: 1 },
+                    colors: {
+                        baseMain: '#FFF7ED',
+                        neckShadow: '#FED7AA',
+                        stripe: '#FDBA74',
+                        earInner: '#FDBA74',
+                        eyeIris: '#1C1917',
+                        patternType: 'solid'
+                    }
+                };
+            }
+
+            // 2) 레어: 제작자네 고양이 쿠키 (단 한 번만 등장)
+            if (!hasMetCookie && roll < 0.12) {
+                hasMetCookie = true;
+                return {
+                    id: 'cookie_unique_creator_cat',
+                    name: '제작자네 쿠키',
+                    patternName: '★ 제작자네 고양이 ★',
+                    badgeClass: 'bg-[#8F745D] text-[#F3ED88]',
+                    sizeLabel: '단 한 번 만나는 특별냥',
+                    scale: 1.05,
+                    pitch: 1.08,
+                    level: 1,
+                    targetLevel: targetLevel,
+                    exp: 0,
+                    isAdopted: false,
+                    isWaitingAtBack: false,
+                    specialType: 'cookie',
+                    nameRenamedAt: 0,
+                    nameRenameCount: 0,
+                    interactionsSinceRename: 99,
+                    morph: { bodyLen: 0.98, headRound: 1.04, tailLen: 1.04, earScale: 1.0, patternSeed: 777 },
+                    colors: {
+                        baseMain: '#8F745D',
+                        neckShadow: '#735B47',
+                        stripe: '#5C4736',
+                        patch2: null,
+                        earInner: '#E5A3A3',
+                        eyeIris: '#F3ED88',
+                        patternType: 'solid'
+                    }
+                };
+            }
+
+            // 3) 레어: 반타블랙 고양이 (입도 안 보이고 눈만 보임, 나올 때마다 눈색 변경)
+            if (roll < 0.18) {
+                const trait = BODY_TRAITS[Math.floor(Math.random() * BODY_TRAITS.length)];
+                const vantaCat = {
+                    id: 'vantablack_' + Math.random().toString(36).substring(2, 9),
+                    name: '그림자',
+                    patternName: '반타블랙 (빛 흡수 99.9%)',
+                    badgeClass: 'bg-black text-white border border-zinc-700',
+                    sizeLabel: '심연의 냥이',
+                    scale: 1.02,
+                    pitch: 0.88,
+                    level: 1,
+                    targetLevel: targetLevel,
+                    exp: 0,
+                    isAdopted: false,
+                    isWaitingAtBack: false,
+                    specialType: 'vantablack',
+                    nameRenamedAt: 0,
+                    nameRenameCount: 0,
+                    interactionsSinceRename: 99,
+                    morph: createMorphProfile(trait),
+                    colors: {
+                        baseMain: '#030303',
+                        neckShadow: '#000000',
+                        stripe: '#000000',
+                        earInner: '#030303',
+                        eyeIris: '#FACC15',
+                        patternType: 'solid'
+                    }
+                };
+                randomizeMysticEyeColor(vantaCat);
+                return vantaCat;
+            }
+
+            // 4) 레어: 투명 고양이 (눈만 선명하게 보임, 나올 때마다 눈색 변경)
+            if (roll < 0.24) {
+                const trait = BODY_TRAITS[Math.floor(Math.random() * BODY_TRAITS.length)];
+                const ghostCat = {
+                    id: 'ghost_' + Math.random().toString(36).substring(2, 9),
+                    name: '유령이',
+                    patternName: '투명 고양이',
+                    badgeClass: 'bg-slate-100 text-slate-500 border border-slate-200',
+                    sizeLabel: '반투명 신비냥',
+                    scale: 1.0,
+                    pitch: 1.22,
+                    level: 1,
+                    targetLevel: targetLevel,
+                    exp: 0,
+                    isAdopted: false,
+                    isWaitingAtBack: false,
+                    specialType: 'transparent',
+                    nameRenamedAt: 0,
+                    nameRenameCount: 0,
+                    interactionsSinceRename: 99,
+                    morph: createMorphProfile(trait),
+                    colors: {
+                        baseMain: '#CBD5E1',
+                        neckShadow: '#94A3B8',
+                        stripe: '#64748B',
+                        earInner: '#F1F5F9',
+                        eyeIris: '#38BDF8',
+                        patternType: 'solid'
+                    }
+                };
+                randomizeMysticEyeColor(ghostCat);
+                return ghostCat;
+            }
+
+            // 5) 레어: 무지개 영물
+            if (roll < 0.285) {
+                const trait = BODY_TRAITS[Math.floor(Math.random() * BODY_TRAITS.length)];
+                return {
+                    id: 'rainbow_' + Math.random().toString(36).substring(2, 9),
+                    name: '레인보우',
+                    patternName: '무지개 영물',
+                    badgeClass: 'bg-gradient-to-r from-pink-500 to-purple-500 text-white',
+                    sizeLabel: '신비로운 냥이',
+                    scale: 1.08,
+                    pitch: 1.3,
+                    level: 1,
+                    targetLevel: targetLevel,
+                    exp: 0,
+                    isAdopted: false,
+                    isWaitingAtBack: false,
+                    specialType: 'rainbow',
+                    nameRenamedAt: 0,
+                    nameRenameCount: 0,
+                    interactionsSinceRename: 99,
+                    morph: createMorphProfile(trait),
+                    colors: {
+                        baseMain: '#EC4899',
+                        neckShadow: '#BE185D',
+                        stripe: '#9D174D',
+                        earInner: '#FBCFE8',
+                        eyeIris: '#A855F7',
+                        patternType: 'tabby'
+                    }
+                };
+            }
+
+            // 6) 일반 코숏 조합 생성
+            let palette, trait, eyeIris, sig;
+            for (let attempt = 0; attempt < 30; attempt++) {
+                palette = COAT_PALETTES[Math.floor(Math.random() * COAT_PALETTES.length)];
+                trait = BODY_TRAITS[Math.floor(Math.random() * BODY_TRAITS.length)];
+                eyeIris = Math.random() > 0.35 ? palette.eyeIris : EYE_COLOR_POOL[Math.floor(Math.random() * EYE_COLOR_POOL.length)];
+                sig = `${palette.name}_${trait.label}_${eyeIris}`;
+                if (!usedSignatures.has(sig)) {
+                    usedSignatures.add(sig);
+                    break;
+                }
+            }
+
+            const usedNames = new Set(spawnedCatsPool.map(c => c.name));
+            const availableNames = CAT_NAMES.filter(n => !usedNames.has(n));
+            const namePool = availableNames.length > 0 ? availableNames : CAT_NAMES;
+            const name = namePool[Math.floor(Math.random() * namePool.length)];
+
+            return {
+                id: 'cat_' + Math.random().toString(36).substring(2, 9),
+                name: name,
+                patternName: palette.name,
+                badgeClass: palette.badge,
+                sizeLabel: trait.label,
+                scale: trait.scale,
+                pitch: trait.pitch,
+                level: 1,
+                targetLevel: targetLevel,
+                exp: 0,
+                isAdopted: false,
+                isWaitingAtBack: false,
+                specialType: 'normal',
+                nameRenamedAt: 0,
+                nameRenameCount: 0,
+                interactionsSinceRename: 99,
+                morph: createMorphProfile(trait),
+                colors: {
+                    baseMain: palette.baseMain,
+                    neckShadow: palette.neckShadow,
+                    stripe: palette.stripe,
+                    patch2: palette.patch2 || null,
+                    earInner: palette.earInner,
+                    eyeIris: eyeIris,
+                    patternType: palette.pattern
+                }
+            };
+        }
+
+        /**
+         * ============================================================================
+         * 3. 크레용/파스텔 일러스트 풍 렌더링
+         *    - [개선 1] 귀와 얼굴이 단일 그룹으로 결합되어 항상 밀착 & 일그러짐 방지
+         *    - [개선 2] 아담하고 포근하게 단축된 식빵 몸통 길이
+         *    - [개선 3] 반타블랙/투명 고양이 입 숨김 & 눈만 선명히 렌더링
+         * ============================================================================
+         */
+        function renderIllustrativeSideLoafSVG(cat, mood = 'idle', isTilting = false) {
+            if (cat.specialType === 'pomeranian') {
+                return renderPomeranianSVG(mood);
+            }
+
+            const c = cat.colors;
+            const m = cat.morph || { bodyLen: 1, headRound: 1, tailLen: 1, earScale: 1, patternSeed: 1 };
+            const isHappy = mood === 'happy';
+            const isAngry = mood === 'angry';
+            const isExcited = mood === 'excited';
+            const isChewing = mood === 'chewing';
+            const isVanta = cat.specialType === 'vantablack';
+            const isTransparent = cat.specialType === 'transparent';
+            const isCookie = cat.specialType === 'cookie';
+            const isRainbow = cat.specialType === 'rainbow';
+
+            // 2. 고양이 몸 길이 축소: 아담하고 포근한 식빵 비율 (기본 약 260)
+            const bodyEndX = Math.round(145 + 115 * m.bodyLen);
+            const bodyMidX = Math.round((142 + bodyEndX) / 2);
+            const headRxScale = m.headRound;
+            const tailScaleX = m.tailLen;
+            // 귀 비율이 일그러지지 않도록 X/Y를 균형 있게 미세 조정
+            const earScaleUniform = 0.94 + (m.earScale - 1) * 0.55;
+
+            // 분노 시 귀가 얼굴 뿌리에 붙은 채 살짝 뒤로 젖혀짐
+            const leftEarRot = isAngry ? 'rotate(-14 54 78)' : 'rotate(0 54 78)';
+            const rightEarRot = isAngry ? 'rotate(14 138 78)' : 'rotate(0 138 78)';
+            const tailAnim = isAngry ? 'animation: tailAngrySlap 0.25s infinite ease-in-out;' : 'animation: tailWagSlow 3.4s infinite ease-in-out;';
+
+            // 몸통 무늬 (반타블랙 및 투명 고양이는 무늬 생략)
+            let patternSVG = '';
+            if (!isVanta && !isTransparent) {
+                if (c.patternType === 'tabby') {
+                    patternSVG = `
+                        <path d="M${bodyMidX - 32},96 Q${bodyMidX - 24},120 ${bodyMidX - 28},148" stroke="${c.stripe}" stroke-width="8.5" stroke-linecap="round" fill="none" opacity="0.55"/>
+                        <path d="M${bodyMidX - 6},92 Q${bodyMidX + 2},118 ${bodyMidX - 2},152" stroke="${c.stripe}" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.55"/>
+                        <path d="M${bodyMidX + 20},94 Q${bodyMidX + 28},120 ${bodyMidX + 24},150" stroke="${c.stripe}" stroke-width="8.5" stroke-linecap="round" fill="none" opacity="0.55"/>
+                        <path d="M${bodyMidX + 44},100 Q${bodyMidX + 50},122 ${bodyMidX + 46},148" stroke="${c.stripe}" stroke-width="7.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+                    `;
+                } else if (c.patternType === 'calico') {
+                    patternSVG = `
+                        <ellipse cx="${bodyMidX - 18}" cy="116" rx="24" ry="18" fill="${c.stripe}" opacity="0.88"/>
+                        <ellipse cx="${bodyMidX + 26}" cy="128" rx="26" ry="20" fill="${c.patch2}" opacity="0.88"/>
+                        <ellipse cx="${bodyMidX + 4}" cy="158" rx="20" ry="13" fill="${c.stripe}" opacity="0.82"/>
+                    `;
+                } else if (c.patternType === 'cow') {
+                    patternSVG = `
+                        <ellipse cx="${bodyMidX - 22}" cy="114" rx="22" ry="16" fill="${c.stripe}" opacity="0.9"/>
+                        <ellipse cx="${bodyMidX + 18}" cy="136" rx="28" ry="22" fill="${c.stripe}" opacity="0.9"/>
+                        <ellipse cx="${bodyMidX - 8}" cy="162" rx="18" ry="11" fill="${c.stripe}" opacity="0.85"/>
+                    `;
+                } else if (c.patternType === 'tortie') {
+                    patternSVG = `
+                        <circle cx="${bodyMidX - 26}" cy="115" r="16" fill="${c.stripe}" opacity="0.75"/>
+                        <circle cx="${bodyMidX + 8}" cy="110" r="19" fill="${c.patch2}" opacity="0.65"/>
+                        <circle cx="${bodyMidX + 28}" cy="142" r="17" fill="${c.stripe}" opacity="0.75"/>
+                        <circle cx="${bodyMidX - 8}" cy="154" r="15" fill="${c.patch2}" opacity="0.65"/>
+                    `;
+                } else if (c.patternType === 'spotted') {
+                    patternSVG = `
+                        <circle cx="${bodyMidX - 28}" cy="112" r="6.5" fill="${c.stripe}" opacity="0.65"/>
+                        <circle cx="${bodyMidX - 6}" cy="106" r="7.5" fill="${c.stripe}" opacity="0.65"/>
+                        <circle cx="${bodyMidX + 16}" cy="114" r="7" fill="${c.stripe}" opacity="0.65"/>
+                        <circle cx="${bodyMidX - 18}" cy="136" r="8" fill="${c.stripe}" opacity="0.65"/>
+                        <circle cx="${bodyMidX + 6}" cy="134" r="7.5" fill="${c.stripe}" opacity="0.65"/>
+                        <circle cx="${bodyMidX + 28}" cy="136" r="7" fill="${c.stripe}" opacity="0.65"/>
+                        <circle cx="${bodyMidX - 6}" cy="158" r="6.5" fill="${c.stripe}" opacity="0.6"/>
+                        <circle cx="${bodyMidX + 20}" cy="160" r="6.5" fill="${c.stripe}" opacity="0.6"/>
+                    `;
+                } else if (c.patternType === 'tuxedo' || c.patternType === 'socks') {
+                    patternSVG = `
+                        <path d="M44,148 C65,165 110,165 132,148 C122,182 58,184 44,148 Z" fill="${c.stripe}" opacity="0.92"/>
+                    `;
+                } else if (c.patternType === 'point') {
+                    patternSVG = `
+                        <ellipse cx="${bodyEndX - 14}" cy="145" rx="24" ry="24" fill="${c.stripe}" opacity="0.45"/>
+                    `;
+                }
+            }
+
+            let cookieAccessorySVG = '';
+            if (isCookie) {
+                cookieAccessorySVG = `
+                    <path d="M46,133 C72,150 124,148 148,125" stroke="#E11D48" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+                    <circle cx="96" cy="145" r="7.5" fill="#FBBF24" stroke="#B45309" stroke-width="1.5"/>
+                    <circle cx="96" cy="147" r="2" fill="#78350F"/>
+                `;
+            }
+
+            let facePatternSVG = '';
+            if (!isVanta && !isTransparent) {
+                if (c.patternType === 'calico') {
+                    facePatternSVG = `
+                        <path d="M36,78 C30,92 34,112 56,112 C68,104 68,78 52,66 Z" fill="${c.stripe}" opacity="0.9"/>
+                        <path d="M126,64 C144,72 154,92 146,110 C130,112 122,90 126,64 Z" fill="${c.patch2}" opacity="0.9"/>
+                    `;
+                } else if (c.patternType === 'cow') {
+                    facePatternSVG = `
+                        <path d="M118,62 C142,68 156,90 148,112 C132,114 118,92 118,62 Z" fill="${c.stripe}" opacity="0.9"/>
+                    `;
+                } else if (c.patternType === 'point') {
+                    facePatternSVG = `
+                        <ellipse cx="96" cy="112" rx="34" ry="24" fill="${c.stripe}" opacity="0.65"/>
+                    `;
+                } else if (c.patternType === 'tuxedo') {
+                    facePatternSVG = `
+                        <path d="M74,116 Q96,104 118,116 C122,136 108,142 96,142 C84,142 70,136 74,116 Z" fill="${c.stripe}" opacity="0.92"/>
+                    `;
+                }
+            }
+
+            // 눈 SVG (반타블랙 & 투명 고양이는 오직 눈만 선명하게 표시됨)
+            let eyeSVG = '';
+            if (isHappy) {
+                const eyeStroke = (isVanta || isTransparent) ? c.eyeIris : '#363636';
+                eyeSVG = `
+                    <path d="M62,102 Q70,94 78,102" stroke="${eyeStroke}" stroke-width="4.2" stroke-linecap="round" fill="none"/>
+                    <path d="M114,102 Q122,94 130,102" stroke="${eyeStroke}" stroke-width="4.2" stroke-linecap="round" fill="none"/>
+                `;
+            } else if (isAngry) {
+                const browStroke = isVanta ? '#EF4444' : (isTransparent ? c.eyeIris : '#363636');
+                eyeSVG = `
+                    <circle cx="70" cy="102" r="6.4" fill="${c.eyeIris}"/>
+                    <circle cx="122" cy="102" r="6.4" fill="${c.eyeIris}"/>
+                    <path d="M60,92 L80,99" stroke="${browStroke}" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M132,92 L112,99" stroke="${browStroke}" stroke-width="4" stroke-linecap="round"/>
+                `;
+            } else {
+                const eyeR = isExcited ? 7.4 : 6.2;
+                eyeSVG = `
+                    <circle cx="70" cy="102" r="${eyeR}" fill="${c.eyeIris}"/>
+                    <circle cx="122" cy="102" r="${eyeR}" fill="${c.eyeIris}"/>
+                `;
+            }
+
+            // 3. 반타블랙 및 투명 고양이는 입과 코를 완전히 생략하여 눈만 보이도록 처리
+            let mouthSVG = '';
+            if (!isVanta && !isTransparent) {
+                const mouthColor = '#3A3A3A';
+                if (isAngry) {
+                    mouthSVG = `
+                        <ellipse cx="96" cy="116" rx="5.5" ry="3.8" fill="${mouthColor}"/>
+                        <path d="M84,132 Q96,122 108,132 Q96,142 84,132 Z" fill="#E11D48"/>
+                    `;
+                } else if (isChewing) {
+                    mouthSVG = `
+                        <ellipse cx="96" cy="116" rx="5.5" ry="3.8" fill="${mouthColor}"/>
+                        <path d="M82,125 Q89,131 96,125 Q103,131 110,125" stroke="${mouthColor}" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+                        <path d="M90,130 Q96,138 102,130" fill="#F43F5E"/>
+                    `;
+                } else {
+                    mouthSVG = `
+                        <ellipse cx="96" cy="116" rx="5.8" ry="4.0" fill="${mouthColor}"/>
+                        <path d="M80,125 C80,132 94,132 96,125 C98,132 112,132 112,125" stroke="${mouthColor}" stroke-width="4.8" stroke-linecap="round" fill="none"/>
+                    `;
+                }
+            }
+
+            const extraClasses = isRainbow ? 'animate-rainbow' : '';
+            const bodyOpacity = isTransparent ? '0.13' : '1';
+            const tailFill = (c.patternType === 'point' || c.patternType === 'calico') ? c.stripe : c.baseMain;
+            const earFill = c.patternType === 'point' ? c.stripe : c.baseMain;
+            const headTiltClass = isTilting ? 'head-tilting' : '';
+
+            return `
+            <svg viewBox="0 0 365 245" class="w-[300px] sm:w-[390px] md:w-[430px] h-auto overflow-visible ${extraClasses}">
+                <defs>
+                    <filter id="crayonEdge" x="-8%" y="-8%" width="116%" height="116%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.16" numOctaves="3" result="noise"/>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+                </defs>
+
+                <!-- 몸통, 꼬리, 얼굴 윤곽 레이어 (투명 고양이는 아주 희미한 실루엣만 보임) -->
+                <g filter="url(#crayonEdge)" opacity="${bodyOpacity}">
+                    <!-- 1. 꼬리 (줄어든 bodyEndX에 맞춰 부착) -->
+                    <g transform="translate(${bodyEndX}, 145) scale(${tailScaleX}, ${0.86 + tailScaleX * 0.14}) translate(-260, -145)">
+                        <g style="transform-origin: 260px 145px; ${tailAnim}">
+                            <path d="M258,134 C290,142 306,174 292,202 C280,224 248,232 224,228 C212,226 212,209 226,209 C244,209 262,201 268,186 C274,170 264,154 248,150 Z"
+                                  fill="${tailFill}"/>
+                        </g>
+                    </g>
+
+                    <!-- 2. 아담하고 포근하게 단축된 식빵 몸통 -->
+                    <path d="M42,135 C22,145 20,175 45,186 C80,194 ${bodyEndX - 36},192 ${bodyEndX},180 C${bodyEndX + 26},170 ${bodyEndX + 28},132 ${bodyEndX + 8},110 C${bodyEndX - 18},86 196,78 152,86 L142,130 L42,135 Z"
+                          fill="${c.baseMain}"/>
+
+                    ${patternSVG}
+
+                    <!-- 3. 턱과 가슴 경계 그림자 (반타블랙은 순수 검정 유지) -->
+                    ${!isVanta ? `
+                    <path d="M36,132 C55,152 125,152 152,126 C164,112 168,94 164,84 L152,86 C155,98 148,118 134,128 C110,144 65,144 44,128 Z"
+                          fill="${c.neckShadow}"/>
+                    ` : ''}
+
+                    ${cookieAccessorySVG}
+
+                    <!-- 4 & 5. 얼굴과 귀 통합 그룹 (절대 귀가 떨어지거나 일그러지지 않으며, 고개 갸우뚱 시 함께 기울어짐) -->
+                    <g class="${headTiltClass}">
+                        <g transform="translate(96, 102) scale(${headRxScale}, 1) translate(-96, -102)">
+                            <!-- 왼쪽 귀 (얼굴 좌상단 내부 y=86, x=76까지 깊숙이 겹쳐 절대 떨어지지 않음) -->
+                            <g transform="translate(54, 78) scale(${earScaleUniform}) translate(-54, -78)">
+                                <g style="transform: ${leftEarRot}; transition: transform 0.25s ease;">
+                                    <path d="M35,88 L26,35 C26,30 31,28 36,32 L76,62 L62,92 Z" fill="${earFill}"/>
+                                    ${!isVanta ? `<path d="M38,80 L31,42 L56,66 Z" fill="${c.earInner}"/>` : ''}
+                                </g>
+                            </g>
+
+                            <!-- 오른쪽 귀 (얼굴 우상단 내부 y=88, x=116까지 깊숙이 겹쳐 절대 떨어지지 않음) -->
+                            <g transform="translate(138, 78) scale(${earScaleUniform}) translate(-138, -78)">
+                                <g style="transform: ${rightEarRot}; transition: transform 0.25s ease;">
+                                    <path d="M116,62 L152,32 C157,28 162,30 162,35 L155,88 L128,92 Z" fill="${earFill}"/>
+                                    ${!isVanta ? `<path d="M134,66 L157,42 L152,80 Z" fill="${c.earInner}"/>` : ''}
+                                </g>
+                            </g>
+
+                            <!-- 얼굴 메인 윤곽 -->
+                            <path d="M36,78 C24,96 28,128 56,138 C82,146 118,146 142,134 C162,122 164,92 152,74 C136,50 62,50 36,78 Z"
+                                  fill="${c.baseMain}"/>
+                            ${facePatternSVG}
+                        </g>
+                    </g>
+                </g>
+
+                <!-- 6. 눈과 입 레이어 (투명 고양이도 눈만큼은 opacity 1로 선명하게 표시되며, 고개 갸우뚱 시 얼굴과 똑같이 회전!) -->
+                <g filter="url(#crayonEdge)" class="${headTiltClass}">
+                    <g transform="translate(96, 102) scale(${headRxScale}, 1) translate(-96, -102)">
+                        ${eyeSVG}
+                        ${mouthSVG}
+                    </g>
+                </g>
+
+                <!-- 7. 인터랙션 히트박스 (단축된 bodyEndX에 맞춰 정렬) -->
+                <path data-zone="head" class="hit-zone" d="M20,30 L165,30 L170,80 L${bodyEndX + 16},85 L${bodyEndX + 24},145 L160,145 L25,142 Z" fill="transparent"/>
+                <path data-zone="belly" class="hit-zone" d="M25,144 L${bodyEndX + 4},146 L${bodyEndX + 4},192 L35,192 Z" fill="transparent"/>
+                <path data-zone="tail" class="hit-zone" d="M${bodyEndX + 2},135 L${bodyEndX + 75},140 L${bodyEndX + 70},232 L${bodyEndX - 42},232 L${bodyEndX - 38},198 L${bodyEndX + 2},195 Z" fill="transparent"/>
+            </svg>
+            `;
+        }
+
+        // 초희귀 포메라니안 SVG 렌더링
+        function renderPomeranianSVG(mood = 'idle') {
+            const isBarking = mood === 'angry';
+            return `
+            <svg viewBox="0 0 350 240" class="w-[295px] sm:w-[380px] md:w-[410px] h-auto overflow-visible">
+                <defs>
+                    <filter id="pomFluff" x="-10%" y="-10%" width="120%" height="120%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.18" numOctaves="3" result="noise"/>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4.2" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+                </defs>
+                <g filter="url(#pomFluff)">
+                    <path d="M265,125 C295,95 318,118 302,148 C288,172 258,165 255,145 Z" fill="#FDE68A" style="transform-origin: 265px 135px; animation: tailWagSlow 0.45s infinite ease-in-out;"/>
+                    <path d="M62,125 C42,142 46,184 78,190 C125,196 225,194 265,180 C292,168 290,124 262,106 C225,86 175,86 145,96 Z" fill="#FFF7ED"/>
+                    <path d="M45,112 C32,135 45,172 88,176 C128,180 155,152 148,122 Z" fill="#FFEDD5"/>
+                    <path d="M46,84 L38,42 L72,62 Z" fill="#FDBA74"/>
+                    <path d="M116,60 L144,38 L146,82 Z" fill="#FDBA74"/>
+                    <circle cx="94" cy="102" r="52" fill="#FFF7ED"/>
+                    <path d="M52,136 Q94,154 136,134" stroke="#EF4444" stroke-width="6" stroke-linecap="round" fill="none"/>
+                    <circle cx="94" cy="147" r="6" fill="#FBBF24"/>
+                    <circle cx="74" cy="96" r="6.5" fill="#1C1917"/>
+                    <circle cx="72" cy="94" r="2" fill="#FFFFFF"/>
+                    <circle cx="114" cy="96" r="6.5" fill="#1C1917"/>
+                    <circle cx="112" cy="94" r="2" fill="#FFFFFF"/>
+                    <ellipse cx="94" cy="109" rx="6" ry="4.5" fill="#1C1917"/>
+                    ${isBarking
+                        ? `<ellipse cx="94" cy="124" rx="11" ry="9" fill="#E11D48"/><path d="M86,118 L90,122 L94,118 L98,122 L102,118" fill="#FFFFFF"/>`
+                        : `<path d="M82,117 Q94,127 106,117" stroke="#1C1917" stroke-width="3.5" stroke-linecap="round" fill="none"/><path d="M89,121 Q94,132 99,121" fill="#FB7185"/>`
+                    }
+                </g>
+                <rect data-zone="dog" class="hit-zone" x="30" y="30" width="290" height="175" fill="transparent"/>
+            </svg>
+            `;
+        }
+
+        // 대기실 미니 고양이 SVG (반타블랙/투명 고양이도 눈만 선명히 보이도록 통일)
+        function renderFrontWaitingCatSVG(cat) {
+            const c = cat.colors;
+            const isVanta = cat.specialType === 'vantablack';
+            const isTransparent = cat.specialType === 'transparent';
+            const isCookie = cat.specialType === 'cookie';
+            const isRainbow = cat.specialType === 'rainbow';
+
+            const extraClasses = isRainbow ? 'animate-rainbow' : '';
+            const bodyOpacity = isTransparent ? '0.16' : '1';
+            const mouthColor = '#3A3A3A';
+
+            return `
+            <svg viewBox="0 0 110 100" class="w-16 h-16 sm:w-20 sm:h-20 overflow-visible ${extraClasses}">
+                <defs>
+                    <filter id="miniCrayon" x="-10%" y="-10%" width="120%" height="120%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" result="noise"/>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+                </defs>
+                <g filter="url(#miniCrayon)" opacity="${bodyOpacity}">
+                    <path d="M80,65 C94,68 98,85 86,94 C78,99 68,96 68,90" stroke="${c.baseMain}" stroke-width="9" stroke-linecap="round" fill="none" style="transform-origin: 80px 65px; animation: tailWagSlow 2.8s infinite ease-in-out;"/>
+                    <path d="M24,62 C16,66 16,82 28,85 C46,88 72,88 82,82 C92,76 90,58 78,52 L34,54 Z" fill="${c.baseMain}"/>
+                    ${!isVanta ? `<path d="M24,60 C34,68 56,68 64,56 L58,54 C52,62 36,62 28,56 Z" fill="${c.neckShadow}"/>` : ''}
+                    ${isCookie ? `<path d="M26,60 Q45,70 62,58" stroke="#E11D48" stroke-width="3" fill="none"/><circle cx="45" cy="65" r="3" fill="#FBBF24"/>` : ''}
+                    <path d="M24,44 L19,20 L38,32 Z" fill="${c.baseMain}"/>
+                    ${!isVanta ? `<path d="M25,40 L21,24 L33,34 Z" fill="${c.earInner}"/>` : ''}
+                    <path d="M52,32 L68,20 L66,44 Z" fill="${c.baseMain}"/>
+                    ${!isVanta ? `<path d="M57,34 L66,24 L64,40 Z" fill="${c.earInner}"/>` : ''}
+                    <ellipse cx="45" cy="45" rx="24" ry="18" fill="${c.baseMain}"/>
+                </g>
+                <g filter="url(#miniCrayon)">
+                    <circle cx="36" cy="44" r="2.8" fill="${c.eyeIris}"/>
+                    <circle cx="54" cy="44" r="2.8" fill="${c.eyeIris}"/>
+                    ${(!isVanta && !isTransparent) ? `
+                        <ellipse cx="45" cy="49" rx="2.4" ry="1.6" fill="${mouthColor}"/>
+                        <path d="M39,52 C39,55 44,55 45,52 C46,55 51,55 51,52" stroke="${mouthColor}" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    ` : ''}
+                </g>
+            </svg>
+            `;
+        }
+
+        /**
+         * ============================================================================
+         * 4. UI 및 게임 컨트롤 로직
+         * ============================================================================
+         */
+        const dom = {
+            catHeaderCard: document.getElementById('catHeaderCard'),
+            headerLeftSpacer: document.getElementById('headerLeftSpacer'),
+            editNameTriggerBtn: document.getElementById('editNameTriggerBtn'),
+            callCatNameBtn: document.getElementById('callCatNameBtn'),
+            nameEditRow: document.getElementById('nameEditRow'),
+            catNameInput: document.getElementById('catNameInput'),
+            saveNameBtn: document.getElementById('saveNameBtn'),
+            cancelNameBtn: document.getElementById('cancelNameBtn'),
+            catName: document.getElementById('catNameDisplay'),
+            catPatternBadge: document.getElementById('catPatternBadge'),
+            catSizeBadge: document.getElementById('catSizeBadge'),
+            catLevel: document.getElementById('catLevelDisplay'),
+            catTargetLevel: document.getElementById('catTargetLevelDisplay'),
+            expBarFill: document.getElementById('expBarFill'),
+            expText: document.getElementById('expTextDisplay'),
+            emptyStagePrompt: document.getElementById('emptyStagePrompt'),
+            catScaleContainer: document.getElementById('catScaleContainer'),
+            mainCatVisual: document.getElementById('mainCatVisual'),
+            statusBubble: document.getElementById('statusBubble'),
+            statusBubbleText: document.getElementById('statusBubbleText'),
+            waitingGuideLabel: document.getElementById('waitingGuideLabel'),
+            waitingCatsRow: document.getElementById('waitingCatsRow'),
+            particleLayer: document.getElementById('particleLayer'),
+            bottleCapLayer: document.getElementById('bottleCapLayer'),
+            propOverlay: document.getElementById('propOverlay'),
+            levelTenToast: document.getElementById('levelTenToast'),
+            levelTenTitle: document.getElementById('levelTenTitle'),
+            callNextCatBtn: document.getElementById('callNextCatBtn'),
+            feedSnackBtn: document.getElementById('feedSnackBtn'),
+            playFoxtailBtn: document.getElementById('playFoxtailBtn'),
+            playLaserBtn: document.getElementById('playLaserBtn'),
+            playFeatherBtn: document.getElementById('playFeatherBtn'),
+            playCatnipBtn: document.getElementById('playCatnipBtn'),
+            throwCapBtn: document.getElementById('throwCapBtn'),
+            soundToggleBtn: document.getElementById('soundToggleBtn'),
+            soundIcon: document.getElementById('soundIcon')
+        };
+
+        function getCurrentCat() {
+            if (currentCatIndex === null || spawnedCatsPool.length === 0) return null;
+            return spawnedCatsPool[currentCatIndex];
+        }
+
+        function closeNameEditor() {
+            dom.nameEditRow.classList.add('hidden');
+            dom.nameEditRow.classList.remove('flex');
+        }
+
+        function updateHeaderUI() {
+            const cat = getCurrentCat();
+            // 4. 처음 시작할 때 & 고양이가 도망가서 화면에 없을 때 좌상단 프로필 카드 완전 숨김
+            if (!cat) {
+                dom.catHeaderCard.classList.add('hidden');
+                dom.catHeaderCard.classList.remove('flex');
+                dom.headerLeftSpacer.classList.remove('hidden');
+                closeNameEditor();
+                return;
+            }
+
+            dom.catHeaderCard.classList.remove('hidden');
+            dom.catHeaderCard.classList.add('flex');
+            dom.headerLeftSpacer.classList.add('hidden');
+            dom.catName.textContent = cat.name;
+
+            if (cat.specialType === 'rainbow') {
+                dom.catPatternBadge.textContent = '✨ 무지개 영물 ✨';
+                dom.catPatternBadge.className = 'text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white';
+            } else if (cat.specialType === 'pomeranian') {
+                dom.catPatternBadge.textContent = '🐶 초희귀 포메라니안';
+                dom.catPatternBadge.className = 'text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-amber-500 text-white';
+            } else if (cat.specialType === 'cookie') {
+                dom.catPatternBadge.textContent = '🍪 제작자네 고양이';
+                dom.catPatternBadge.className = 'text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-[#8F745D] text-[#F3ED88]';
+            } else if (cat.specialType === 'vantablack') {
+                dom.catPatternBadge.textContent = '⬛ 반타블랙 고양이';
+                dom.catPatternBadge.className = 'text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-black text-white border border-zinc-700';
+            } else if (cat.specialType === 'transparent') {
+                dom.catPatternBadge.textContent = '👻 투명 고양이';
+                dom.catPatternBadge.className = 'text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 border border-slate-200';
+            } else {
+                dom.catPatternBadge.textContent = `코숏 · ${cat.patternName}`;
+                dom.catPatternBadge.className = `text-[11px] sm:text-xs font-semibold px-2 py-0.5 rounded-full ${cat.badgeClass}`;
+            }
+
+            dom.catSizeBadge.textContent = cat.sizeLabel;
+            dom.catLevel.textContent = cat.level;
+
+            if (cat.specialType === 'pomeranian') {
+                dom.catTargetLevel.textContent = '· 남의 집 댕댕이';
+                dom.expBarFill.style.width = '100%';
+                dom.expText.textContent = '주의';
+            } else {
+                dom.catTargetLevel.textContent = `/ ${cat.targetLevel} (간택)`;
+                const pct = cat.isAdopted ? 100 : Math.min(100, Math.round(cat.exp));
+                dom.expBarFill.style.width = `${pct}%`;
+                dom.expText.textContent = cat.isAdopted ? '간택!' : `${pct}%`;
+            }
+        }
+
+        function renderMainCat(animateEntry = false, isTilting = false) {
+            const cat = getCurrentCat();
+            if (!cat) {
+                dom.mainCatVisual.innerHTML = '';
+                dom.catScaleContainer.classList.add('hidden');
+                dom.catScaleContainer.classList.remove('flex');
+                dom.emptyStagePrompt.classList.remove('hidden');
+                updateHeaderUI();
+                return;
+            }
+
+            dom.emptyStagePrompt.classList.add('hidden');
+            dom.catScaleContainer.classList.remove('hidden');
+            dom.catScaleContainer.classList.add('flex');
+            dom.catScaleContainer.style.transform = `scale(${cat.scale})`;
+            dom.mainCatVisual.innerHTML = renderIllustrativeSideLoafSVG(cat, currentMood, isTilting);
+
+            if (animateEntry) {
+                dom.mainCatVisual.classList.remove('animate-pop-in', 'animate-walk-away');
+                void dom.mainCatVisual.offsetWidth;
+                dom.mainCatVisual.classList.add('animate-pop-in');
+            }
+            updateHeaderUI();
+        }
+
+        function renderWaitingLounge() {
+            const waitingCats = spawnedCatsPool.filter((c, idx) =>
+                c.isAdopted && c.isWaitingAtBack && (currentCatIndex === null || idx !== currentCatIndex)
+            );
+
+            if (waitingCats.length === 0) {
+                dom.waitingGuideLabel.classList.add('hidden');
+                dom.waitingCatsRow.innerHTML = '';
+                return;
+            }
+
+            dom.waitingGuideLabel.classList.remove('hidden');
+            dom.waitingCatsRow.innerHTML = waitingCats.map(cat => {
+                const actualIdx = spawnedCatsPool.indexOf(cat);
+                return `
+                <button data-recall-index="${actualIdx}"
+                    class="waiting-cat-item group flex flex-col items-center focus:outline-none cursor-pointer"
+                    title="${cat.name} 다시 앞으로 소환하기">
+                    <div class="relative">
+                        ${renderFrontWaitingCatSVG(cat)}
+                        <span class="absolute -top-1 -right-1 bg-amber-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full shadow-xs">
+                            간택됨
+                        </span>
+                    </div>
+                    <span class="mt-0.5 text-[11px] font-bold text-slate-600 group-hover:text-amber-600 transition-colors bg-slate-50 px-2 py-0.5 rounded-full">
+                        ${cat.name}
+                    </span>
+                </button>
+            `;
+            }).join('');
+
+            dom.waitingCatsRow.querySelectorAll('[data-recall-index]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const idx = parseInt(btn.getAttribute('data-recall-index'));
+                    recallWaitingCat(idx);
+                });
+            });
+        }
+
+        function recallWaitingCat(targetIdx) {
+            if (targetIdx < 0 || targetIdx >= spawnedCatsPool.length) return;
+            closeNameEditor();
+
+            const prevCat = getCurrentCat();
+            if (prevCat && prevCat.isAdopted) {
+                prevCat.isWaitingAtBack = true;
+            }
+
+            currentCatIndex = targetIdx;
+            const cat = getCurrentCat();
+            cat.isWaitingAtBack = false;
+
+            // 3. 반타블랙 및 투명 고양이가 다시 앞으로 나올 때마다 새로운 눈색으로 변경!
+            randomizeMysticEyeColor(cat);
+
+            setMood('happy', 1500);
+            soundEngine.playMeow(cat.pitch);
+
+            renderMainCat(true);
+            renderWaitingLounge();
+            showStatusBubble(`${cat.name}(이)가 반갑게 달려왔어요! 🐾`, 'happy');
+        }
+
+        function showStatusBubble(text, type = 'neutral') {
+            clearTimeout(bubbleTimer);
+            dom.statusBubbleText.textContent = text;
+            dom.statusBubbleText.className = type === 'happy'
+                ? 'px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-rose-500 text-white shadow-sm'
+                : (type === 'angry' ? 'px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-slate-900 text-amber-300 shadow-sm'
+                : 'px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-slate-800 text-white shadow-sm');
+
+            dom.statusBubble.classList.remove('opacity-0', 'translate-y-2');
+            dom.statusBubble.classList.add('opacity-100', 'translate-y-0');
+
+            bubbleTimer = setTimeout(() => {
+                dom.statusBubble.classList.remove('opacity-100', 'translate-y-0');
+                dom.statusBubble.classList.add('opacity-0', 'translate-y-2');
+            }, 1850);
+        }
+
+        function setMood(newMood, duration = 900) {
+            clearTimeout(moodResetTimer);
+            const cat = getCurrentCat();
+            if (!cat) return;
+
+            const prevMood = currentMood;
+            currentMood = newMood;
+
+            if (prevMood !== newMood) {
+                dom.mainCatVisual.innerHTML = renderIllustrativeSideLoafSVG(cat, currentMood, false);
+            }
+
+            dom.mainCatVisual.classList.remove('animate-purr', 'animate-angry', 'animate-chew');
+            if (newMood === 'happy') {
+                dom.mainCatVisual.classList.add('animate-purr');
+            } else if (newMood === 'angry') {
+                void dom.mainCatVisual.offsetWidth;
+                dom.mainCatVisual.classList.add('animate-angry');
+            } else if (newMood === 'chewing') {
+                dom.mainCatVisual.classList.add('animate-chew');
+            }
+
+            if (duration > 0) {
+                moodResetTimer = setTimeout(() => {
+                    currentMood = 'idle';
+                    dom.mainCatVisual.classList.remove('animate-purr', 'animate-angry', 'animate-chew');
+                    const c = getCurrentCat();
+                    if (c) dom.mainCatVisual.innerHTML = renderIllustrativeSideLoafSVG(c, 'idle', false);
+                }, duration);
+            }
+        }
+
+        function spawnParticle(x, y, emoji) {
+            const cat = getCurrentCat();
+            const now = Date.now();
+            const cooldown = (cat && cat.specialType === 'transparent') ? 380 : 95;
+            if (now - lastParticleTime < cooldown) return;
+            if (cat && cat.specialType === 'transparent' && Math.random() > 0.5) return;
+
+            lastParticleTime = now;
+
+            const el = document.createElement('div');
+            el.textContent = emoji;
+            el.className = 'fixed text-xl sm:text-2xl animate-float-up select-none';
+            if (cat && cat.specialType === 'transparent') {
+                el.style.opacity = '0.55';
+            }
+            el.style.left = `${x + (Math.random() - 0.5) * 34 - 12}px`;
+            el.style.top = `${y - 20}px`;
+            dom.particleLayer.appendChild(el);
+
+            setTimeout(() => el.remove(), 1250);
+        }
+
+        /**
+         * ============================================================================
+         * 5. 고양이 이름 커스터마이징 & 이름 부르기 / 고개 갸우뚱(Head Tilt) 기믹
+         * ============================================================================
+         */
+        dom.editNameTriggerBtn.addEventListener('click', () => {
+            const cat = getCurrentCat();
+            if (!cat) return;
+
+            if (cat.specialType === 'pomeranian') {
+                showStatusBubble('🐶 남의 집 강아지라서 이름을 바꿀 수 없어요!', 'angry');
+                return;
+            }
+
+            dom.nameEditRow.classList.remove('hidden');
+            dom.nameEditRow.classList.add('flex');
+            dom.catNameInput.value = cat.name;
+            dom.catNameInput.focus();
+            dom.catNameInput.select();
+        });
+
+        dom.cancelNameBtn.addEventListener('click', closeNameEditor);
+
+        function applyNewCatName() {
+            const cat = getCurrentCat();
+            if (!cat) return;
+            const raw = dom.catNameInput.value.trim();
+            if (!raw) {
+                closeNameEditor();
+                return;
+            }
+
+            if (raw !== cat.name) {
+                const now = Date.now();
+                // 짧은 시간 내(25초 이내) 이름을 또 바꾸면 혼란스러움 가중
+                if (now - cat.nameRenamedAt < 25000) {
+                    cat.nameRenameCount += 1;
+                } else {
+                    cat.nameRenameCount = 1;
+                }
+                cat.name = raw;
+                cat.nameRenamedAt = now;
+                // 이름을 바꾼 직후에는 새 이름에 익숙해지기 전까지 교감(쓰다듬기/간식/놀이)이 필요함
+                cat.interactionsSinceRename = 0;
+                updateHeaderUI();
+                renderWaitingLounge();
+
+                if (cat.nameRenameCount >= 2) {
+                    showStatusBubble(`이름을 '${cat.name}'(으)로 또 바꿨어요! 냥이가 헷갈려할지도 몰라요 ❓`, 'neutral');
+                } else {
+                    showStatusBubble(`이름을 '${cat.name}'(으)로 지어줬어요! 익숙해지려면 교감이 필요해요 🐾`, 'neutral');
+                }
+            }
+            closeNameEditor();
+        }
+
+        dom.saveNameBtn.addEventListener('click', applyNewCatName);
+        dom.catNameInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') applyNewCatName();
+            if (e.key === 'Escape') closeNameEditor();
+        });
+
+        // 이름 부르기 버튼 클릭 핸들러
+        dom.callCatNameBtn.addEventListener('click', () => {
+            const cat = getCurrentCat();
+            if (!cat || actionLock) return;
+
+            if (cat.specialType === 'pomeranian') {
+                triggerPomeranianBarkAndFlee();
+                return;
+            }
+
+            const now = Date.now();
+            const secondsSinceRename = (now - cat.nameRenamedAt) / 1000;
+            const requiredInteractions = Math.min(8, 2 + cat.nameRenameCount);
+            const isStillUnfamiliarWithNewName =
+                cat.nameRenamedAt > 0 &&
+                secondsSinceRename < 25 &&
+                cat.interactionsSinceRename < requiredInteractions;
+
+            const rect = dom.mainCatVisual.getBoundingClientRect();
+
+            // 조건 1: 호감도 레벨이 4 이하일 때 -> 대답 없이 고개 갸우뚱
+            if (cat.level <= 4) {
+                triggerHeadTilt(cat, rect, `"${cat.name}야~!" 불렀지만 Lv.${cat.level}이라 아직 자기 이름을 몰라 고개를 갸우뚱해요 ❓`);
+                return;
+            }
+
+            // 조건 2: 이름을 너무 자주 바꿨거나, 집사가 된 후라도 이름을 바꾼 직후 한동안 -> 못 알아듣고 고개 갸우뚱
+            if (isStillUnfamiliarWithNewName) {
+                const msg = cat.nameRenameCount >= 2
+                    ? `"${cat.name}야~!" 이름을 너무 자주 바꿔서 헷갈리는지 고개만 갸우뚱해요 ❓`
+                    : `"${cat.name}야~!" 바뀐 이름이 아직 낯선지 고개를 갸우뚱해요 ❓`;
+                triggerHeadTilt(cat, rect, msg);
+                return;
+            }
+
+            // 이름을 알아듣고 반갑게 대답!
+            setMood('happy', 1100);
+            soundEngine.playMeow(cat.pitch * 1.06);
+            spawnParticle(rect.left + rect.width * 0.35, rect.top + rect.height * 0.25, '🎵');
+            spawnParticle(rect.left + rect.width * 0.42, rect.top + rect.height * 0.22, '💕');
+            addExperience(6);
+            showStatusBubble(`"${cat.name}야~!" 부르자 반갑게 "야옹~!" 하고 대답했어요! 💖`, 'happy');
+        });
+
+        function triggerHeadTilt(cat, rect, bubbleMsg) {
+            soundEngine.playConfusedTilt();
+            // SVG 얼굴/귀 그룹에 고개 갸우뚱 애니메이션 적용
+            renderMainCat(false, true);
+            spawnParticle(rect.left + rect.width * 0.35, rect.top + rect.height * 0.2, '❓');
+            showStatusBubble(bubbleMsg, 'neutral');
+
+            setTimeout(() => {
+                if (getCurrentCat() && getCurrentCat().id === cat.id) {
+                    renderMainCat(false, false);
+                }
+            }, 1360);
+        }
+
+        /**
+         * ============================================================================
+         * 6. 병뚜껑 대란 & 포메라니안 도망 시스템
+         * ============================================================================
+         */
+        function throwBottleCap() {
+            const cat = getCurrentCat();
+            if (!cat || actionLock) {
+                showStatusBubble('지금은 고양이가 없어요! 고양이를 불러주세요.', 'neutral');
+                return;
+            }
+
+            if (cat.specialType === 'pomeranian') {
+                triggerPomeranianBarkAndFlee();
+                return;
+            }
+
+            bottleCapsCount++;
+            const capEl = document.createElement('div');
+            const isMetal = Math.random() > 0.5;
+            const randomX = window.innerWidth * 0.25 + Math.random() * (window.innerWidth * 0.5);
+            const randomY = window.innerHeight * 0.55 + Math.random() * (window.innerHeight * 0.2);
+
+            capEl.className = 'absolute bottle-cap-item w-8 h-8 rounded-full flex items-center justify-center shadow-md select-none pointer-events-none';
+            capEl.style.left = `${randomX}px`;
+            capEl.style.top = `${randomY}px`;
+            capEl.innerHTML = isMetal 
+                ? `<div class="w-7 h-7 rounded-full bg-slate-300 border-2 border-slate-400 flex items-center justify-center text-[9px] font-black text-slate-700 shadow-inner">METAL</div>`
+                : `<div class="w-7 h-7 rounded-full bg-blue-500 border-2 border-blue-600 flex items-center justify-center text-[9px] font-black text-white shadow-inner">CAP</div>`;
+            
+            dom.bottleCapLayer.appendChild(capEl);
+            soundEngine.playMeow(cat.pitch * 1.1);
+
+            if (bottleCapsCount >= 3 || Math.random() < 0.45) {
+                triggerCatRageAndLeave();
+            } else {
+                showStatusBubble(`병뚜껑 찰랑! 바닥에 병뚜껑이 쌓였어요 (${bottleCapsCount}/3) 🔘`, 'neutral');
+            }
+        }
+
+        function triggerCatRageAndLeave() {
+            actionLock = true;
+            closeNameEditor();
+            setMood('angry', 1400);
+            soundEngine.playHiss();
+            const cat = getCurrentCat();
+            showStatusBubble(`시끄러워요!! 병뚜껑이 너무 많아 화났어요! 😾`, 'angry');
+
+            setTimeout(() => {
+                const caps = dom.bottleCapLayer.querySelectorAll('.bottle-cap-item');
+                caps.forEach(cap => cap.classList.add('sweeping-caps'));
+
+                dom.mainCatVisual.classList.add('animate-walk-away');
+                soundEngine.playMeow(cat.pitch * 0.8);
+
+                setTimeout(() => {
+                    dom.bottleCapLayer.innerHTML = '';
+                    bottleCapsCount = 0;
+                    dom.mainCatVisual.classList.remove('animate-walk-away');
+                    
+                    if (cat.isAdopted) {
+                        cat.isWaitingAtBack = true;
+                        showStatusBubble('간택된 냥이가 삐져서 뒤쪽 대기실로 가버렸어요! 😿', 'neutral');
+                    } else {
+                        showStatusBubble('고양이가 화가 나서 집으로 가버렸어요! 다른 고양이를 불러주세요 😿', 'neutral');
+                    }
+                    currentCatIndex = null;
+                    renderMainCat(false);
+                    renderWaitingLounge();
+                    actionLock = false;
+                }, 1100);
+            }, 800);
+        }
+
+        function triggerPomeranianBarkAndFlee() {
+            if (actionLock) return;
+            actionLock = true;
+            closeNameEditor();
+            setMood('angry', 1200);
+            soundEngine.playBark();
+            showStatusBubble('멍! 멍멍!! (남의 집 강아지라 짖으면서 주인한테 도망가요! 🐶💨)', 'angry');
+
+            const rect = dom.mainCatVisual.getBoundingClientRect();
+            spawnParticle(rect.left + rect.width * 0.35, rect.top + rect.height * 0.3, '💢');
+
+            setTimeout(() => {
+                dom.mainCatVisual.classList.add('animate-walk-away');
+                soundEngine.playBark();
+
+                setTimeout(() => {
+                    dom.mainCatVisual.classList.remove('animate-walk-away');
+                    currentCatIndex = null;
+                    renderMainCat(false);
+                    renderWaitingLounge();
+                    showStatusBubble('포메라니안이 주인 품으로 달려갔어요! 다른 고양이를 불러보세요 🐾', 'neutral');
+                    actionLock = false;
+                }, 1050);
+            }, 450);
+        }
+
+        /**
+         * ============================================================================
+         * 7. 경험치 및 랜덤 레벨(Lv.5~10) "집사 간택!" 시스템
+         * ============================================================================
+         */
+        function addExperience(amount) {
+            const cat = getCurrentCat();
+            if (!cat || cat.specialType === 'pomeranian') return;
+
+            // 바뀐 이름에 대한 친숙도 카운트 증가
+            cat.interactionsSinceRename = (cat.interactionsSinceRename || 0) + 1;
+
+            if (cat.isAdopted) return;
+
+            cat.exp += amount;
+            if (cat.exp >= 100) {
+                cat.level += 1;
+
+                if (cat.level >= cat.targetLevel) {
+                    cat.level = cat.targetLevel;
+                    cat.exp = 100;
+                    cat.isAdopted = true;
+                    updateHeaderUI();
+                    handleAdoptComplete(cat);
+                    return;
+                } else {
+                    cat.exp = cat.exp - 100;
+                    soundEngine.playLevelUp(false);
+                    const nameHint = cat.level === 5 ? ' 이제 이름을 부르면 알아들어요!' : '';
+                    showStatusBubble(`레벨 업! Lv.${cat.level} (간택까지 ${cat.targetLevel - cat.level}레벨 남음!)${nameHint} ✨`, 'happy');
+                }
+                renderMainCat(false);
+            }
+            updateHeaderUI();
+        }
+
+        function handleAdoptComplete(cat) {
+            soundEngine.playLevelUp(true);
+            dom.levelTenTitle.textContent = `Lv.${cat.targetLevel} 집사 간택! (${cat.name})`;
+            dom.levelTenToast.classList.remove('opacity-0', '-translate-y-4');
+            dom.levelTenToast.classList.add('opacity-100', 'translate-y-0');
+
+            const rect = dom.mainCatVisual.getBoundingClientRect();
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => spawnParticle(rect.left + rect.width * 0.5, rect.top + rect.height * 0.4, '👑'), i * 90);
+            }
+
+            showStatusBubble(`집사 간택 완료! 이제 대기실에서 언제든 다시 부를 수 있어요 👑`, 'happy');
+
+            setTimeout(() => {
+                dom.levelTenToast.classList.remove('opacity-100', 'translate-y-0');
+                dom.levelTenToast.classList.add('opacity-0', '-translate-y-4');
+            }, 4200);
+        }
+
+        // 쓰다듬기 이벤트
+        function handlePetInteraction(clientX, clientY, isContinuousMove = false) {
+            const cat = getCurrentCat();
+            if (!cat || actionLock) return;
+
+            if (cat.specialType === 'pomeranian') {
+                triggerPomeranianBarkAndFlee();
+                return;
+            }
+
+            const targetEl = document.elementFromPoint(clientX, clientY);
+            const zone = targetEl ? targetEl.getAttribute('data-zone') : null;
+            if (!zone) return;
+
+            if (zone === 'head') {
+                setMood('happy', 850);
+                soundEngine.playPurr();
+                spawnParticle(clientX, clientY, Math.random() > 0.35 ? '❤️' : '✨');
+                addExperience(isContinuousMove ? 2.6 : 5.5);
+
+                if (!isContinuousMove || lastPetZone !== 'head') {
+                    showStatusBubble(cat.isAdopted ? '간택된 냥이의 행복한 골골송 💕' : '골골골... 기분 최고예요 💕', 'happy');
+                }
+            } else if (zone === 'belly' || zone === 'tail') {
+                if (!isContinuousMove || lastPetZone !== zone) {
+                    setMood('angry', 1000);
+                    soundEngine.playHiss();
+                    spawnParticle(clientX, clientY, zone === 'tail' ? '💢' : '❗');
+                    if (!cat.isAdopted && cat.exp > 0) {
+                        cat.exp = Math.max(0, cat.exp - 4);
+                        updateHeaderUI();
+                    }
+                    showStatusBubble(zone === 'tail' ? '꼬리는 건드리면 화나요!! 💢' : '야옹!! 배는 만지지 마세요! 😾', 'angry');
+                }
+            }
+            lastPetZone = zone;
+        }
+
+        dom.mainCatVisual.addEventListener('pointerdown', (e) => {
+            isDragging = true;
+            lastPetZone = null;
+            handlePetInteraction(e.clientX, e.clientY, false);
+        });
+        window.addEventListener('pointermove', (e) => {
+            if (!isDragging) return;
+            handlePetInteraction(e.clientX, e.clientY, true);
+        });
+        window.addEventListener('pointerup', () => { isDragging = false; lastPetZone = null; });
+
+        /**
+         * ============================================================================
+         * 8. 다른 고양이 부르기 & 다양한 장난감 / 간식 인터랙션
+         * ============================================================================
+         */
+        dom.callNextCatBtn.addEventListener('click', () => {
+            if (actionLock) return;
+            closeNameEditor();
+
+            const currentCat = getCurrentCat();
+            if (currentCat && currentCat.isAdopted) {
+                currentCat.isWaitingAtBack = true;
+            }
+
+            const newCat = generateUniqueCat();
+            spawnedCatsPool.push(newCat);
+            currentCatIndex = spawnedCatsPool.length - 1;
+
+            const cat = getCurrentCat();
+            currentMood = 'idle';
+            renderWaitingLounge();
+            renderMainCat(true);
+
+            if (cat.specialType === 'pomeranian') {
+                soundEngine.playBark();
+                showStatusBubble('🐶 앗! 다른 사람이 키우는 포메라니안이 놀러왔어요! 만지면 짖어요!', 'angry');
+            } else if (cat.specialType === 'cookie') {
+                soundEngine.playMeow(cat.pitch);
+                showStatusBubble('🍪 레어! 제작자네 고양이 쿠키가 나타났어요!', 'happy');
+            } else if (cat.specialType === 'vantablack') {
+                soundEngine.playMeow(cat.pitch);
+                showStatusBubble('⬛ 레어! 어둠 속에서 두 눈만 빛나는 반타블랙 고양이가 나타났어요!', 'happy');
+            } else if (cat.specialType === 'transparent') {
+                soundEngine.playMeow(cat.pitch);
+                showStatusBubble('👻 레어! 두 눈만 선명하게 떠 있는 투명 고양이가 나타났어요!', 'happy');
+            } else if (cat.specialType === 'rainbow') {
+                soundEngine.playMeow(cat.pitch);
+                showStatusBubble('✨ 초희귀 무지개 영물 고양이가 나타났어요! ✨', 'happy');
+            } else {
+                soundEngine.playMeow(cat.pitch);
+                showStatusBubble(`새로운 코숏 '${cat.name}'(${cat.patternName})이(가) 찾아왔어요! (Lv.${cat.targetLevel} 간택)`, 'neutral');
+            }
+        });
+
+        // 간식 주기
+        dom.feedSnackBtn.addEventListener('click', () => {
+            const cat = getCurrentCat();
+            if (!cat || actionLock) {
+                showStatusBubble('고양이가 없어서 간식을 줄 수 없어요!', 'neutral');
+                return;
+            }
+
+            if (cat.specialType === 'pomeranian') {
+                triggerPomeranianBarkAndFlee();
+                return;
+            }
+
+            setMood('chewing', 1500);
+            soundEngine.playMeow(cat.pitch * 1.05);
+            showStatusBubble(`냠냠 쩝쩝... ${cat.name}(이)가 맛있게 먹어요 🐟`, 'happy');
+
+            dom.propOverlay.innerHTML = `
+                <div class="animate-churu flex items-center gap-1 -translate-x-24 sm:-translate-x-32 translate-y-4">
+                    <svg class="w-20 h-20 sm:w-24 sm:h-24 drop-shadow-md" viewBox="0 0 100 100">
+                        <rect x="10" y="42" width="56" height="22" rx="6" transform="rotate(-18 38 53)" fill="#F59E0B" stroke="#D97706" stroke-width="2"/>
+                        <text x="20" y="56" transform="rotate(-18 38 53)" fill="#FFFFFF" font-size="9" font-weight="bold">CHURU</text>
+                        <path d="M64,43 Q76,38 82,42 Q78,48 66,47 Z" fill="#FDE68A"/>
+                    </svg>
+                </div>
+            `;
+
+            const rect = dom.mainCatVisual.getBoundingClientRect();
+            spawnParticle(rect.left + rect.width * 0.3, rect.top + rect.height * 0.4, '🐟');
+            setTimeout(() => spawnParticle(rect.left + rect.width * 0.35, rect.top + rect.height * 0.3, '💖'), 220);
+
+            addExperience(22);
+            setTimeout(() => { dom.propOverlay.innerHTML = ''; }, 1450);
+        });
+
+        // 장난감 1: 강아지풀 흔들기
+        dom.playFoxtailBtn.addEventListener('click', () => {
+            const cat = getCurrentCat();
+            if (!cat || actionLock) {
+                showStatusBubble('고양이가 없어요!', 'neutral');
+                return;
+            }
+            if (cat.specialType === 'pomeranian') {
+                triggerPomeranianBarkAndFlee();
+                return;
+            }
+
+            setMood('excited', 1400);
+            soundEngine.playMeow(cat.pitch * 1.15);
+            showStatusBubble(`살랑살랑~ ${cat.name}(이)가 강아지풀을 눈으로 쫓아요 🌿`, 'happy');
+
+            dom.propOverlay.innerHTML = `
+                <div class="animate-toy -translate-x-20 sm:-translate-x-28 -translate-y-14">
+                    <svg class="w-24 h-24 sm:w-28 sm:h-28 drop-shadow-md" viewBox="0 0 100 100">
+                        <path d="M90,5 Q65,25 45,55" stroke="#94A3B8" stroke-width="2" fill="none" stroke-dasharray="3,2"/>
+                        <ellipse cx="45" cy="55" rx="12" ry="18" fill="#10B981" transform="rotate(-15 45 55)"/>
+                    </svg>
+                </div>
+            `;
+
+            const rect = dom.mainCatVisual.getBoundingClientRect();
+            spawnParticle(rect.left + rect.width * 0.3, rect.top + rect.height * 0.3, '🌿');
+            addExperience(18);
+            setTimeout(() => { dom.propOverlay.innerHTML = ''; }, 1350);
+        });
+
+        // 장난감 2: 레이저 포인터
+        dom.playLaserBtn.addEventListener('click', () => {
+            const cat = getCurrentCat();
+            if (!cat || actionLock) {
+                showStatusBubble('고양이가 없어요!', 'neutral');
+                return;
+            }
+            if (cat.specialType === 'pomeranian') {
+                triggerPomeranianBarkAndFlee();
+                return;
+            }
+
+            setMood('excited', 1500);
+            soundEngine.playMeow(cat.pitch * 1.25);
+            showStatusBubble(`삐빗! 빨간 레이저 점을 ${cat.name}(이)가 동공 확장 상태로 노려봐요 🔴`, 'happy');
+
+            dom.propOverlay.innerHTML = `
+                <div class="animate-laser">
+                    <div class="w-4 h-4 rounded-full bg-rose-500 shadow-[0_0_14px_4px_rgba(244,63,94,0.85)] border border-white"></div>
+                </div>
+            `;
+
+            const rect = dom.mainCatVisual.getBoundingClientRect();
+            spawnParticle(rect.left + rect.width * 0.32, rect.top + rect.height * 0.28, '✨');
+            addExperience(21);
+            setTimeout(() => { dom.propOverlay.innerHTML = ''; }, 1450);
+        });
+
+        // 장난감 3: 깃털 낚싯대
+        dom.playFeatherBtn.addEventListener('click', () => {
+            const cat = getCurrentCat();
+            if (!cat || actionLock) {
+                showStatusBubble('고양이가 없어요!', 'neutral');
+                return;
+            }
+            if (cat.specialType === 'pomeranian') {
+                triggerPomeranianBarkAndFlee();
+                return;
+            }
+
+            setMood('happy', 1450);
+            soundEngine.playPurr();
+            showStatusBubble(`팔랑팔랑~ 알록달록 깃털 낚싯대에 ${cat.name}(이)가 신났어요 🪶`, 'happy');
+
+            dom.propOverlay.innerHTML = `
+                <div class="animate-feather -translate-x-20 sm:-translate-x-28 -translate-y-12">
+                    <svg class="w-24 h-24 sm:w-28 sm:h-28 drop-shadow-md" viewBox="0 0 100 100">
+                        <path d="M92,8 Q66,22 44,50" stroke="#64748B" stroke-width="2.2" fill="none"/>
+                        <circle cx="44" cy="52" r="4" fill="#FBBF24"/>
+                        <path d="M44,54 C30,66 26,80 34,84 C42,88 46,72 44,54 Z" fill="#38BDF8"/>
+                        <path d="M44,54 C38,70 42,86 50,86 C58,86 52,68 44,54 Z" fill="#F472B6"/>
+                    </svg>
+                </div>
+            `;
+
+            const rect = dom.mainCatVisual.getBoundingClientRect();
+            spawnParticle(rect.left + rect.width * 0.3, rect.top + rect.height * 0.3, '🪶');
+            addExperience(19);
+            setTimeout(() => { dom.propOverlay.innerHTML = ''; }, 1400);
+        });
+
+        // 장난감 4: 캣닢 생선 인형
+        dom.playCatnipBtn.addEventListener('click', () => {
+            const cat = getCurrentCat();
+            if (!cat || actionLock) {
+                showStatusBubble('고양이가 없어요!', 'neutral');
+                return;
+            }
+            if (cat.specialType === 'pomeranian') {
+                triggerPomeranianBarkAndFlee();
+                return;
+            }
+
+            setMood('happy', 1550);
+            soundEngine.playPurr();
+            soundEngine.playMeow(cat.pitch * 0.95);
+            showStatusBubble(`부비부비~ ${cat.name}(이)가 캣닢 생선 인형에 얼굴을 비비며 황홀해해요 🐟💜`, 'happy');
+
+            dom.propOverlay.innerHTML = `
+                <div class="animate-plush -translate-x-22 sm:-translate-x-28 translate-y-8">
+                    <svg class="w-20 h-20 sm:w-24 sm:h-24 drop-shadow-md" viewBox="0 0 100 100">
+                        <path d="M22,52 C34,34 62,34 74,52 C62,70 34,70 22,52 Z" fill="#C084FC" stroke="#9333EA" stroke-width="2.5"/>
+                        <path d="M72,52 L88,38 L85,66 Z" fill="#A855F7" stroke="#9333EA" stroke-width="2"/>
+                        <circle cx="36" cy="49" r="3" fill="#FFFFFF"/>
+                        <path d="M46,42 L46,62 M54,43 L54,61" stroke="#F3E8FF" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            `;
+
+            const rect = dom.mainCatVisual.getBoundingClientRect();
+            spawnParticle(rect.left + rect.width * 0.32, rect.top + rect.height * 0.32, '💜');
+            setTimeout(() => spawnParticle(rect.left + rect.width * 0.38, rect.top + rect.height * 0.25, '🎶'), 220);
+            addExperience(20);
+            setTimeout(() => { dom.propOverlay.innerHTML = ''; }, 1500);
+        });
+
+        // 장난감 5: 병뚜껑 던지기
+        dom.throwCapBtn.addEventListener('click', () => {
+            throwBottleCap();
+        });
+
+        // 사운드 토글
+        dom.soundToggleBtn.addEventListener('click', () => {
+            soundEngine.muted = !soundEngine.muted;
+            if (soundEngine.muted) {
+                dom.soundIcon.className = 'fa-solid fa-volume-xmark text-slate-400 text-base sm:text-lg';
+            } else {
+                dom.soundIcon.className = 'fa-solid fa-volume-high text-slate-700 text-base sm:text-lg';
+                soundEngine.playPurr();
+            }
+        });
+
+        // 초기 실행: 처음에는 화면에 고양이가 없고 좌상단 이름/레벨 카드도 숨겨진 상태로 시작
+        window.addEventListener('DOMContentLoaded', () => {
+            currentCatIndex = null;
+            renderMainCat(false);
+            renderWaitingLounge();
+        });
+    </script>
+</body>
+</html>
